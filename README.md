@@ -42,8 +42,8 @@ You are encouraged to write your coursework on DICE. If the code submitted does 
         - On DICE, EclEmma is already installed.
 
 If you do not know how to use JUnit, here are useful articles:
-    - [Introduction to JUnit 4](https://www.ibm.com/developerworks/java/tutorials/j-junit4/) (free registration required)
-    - [Using JUnit with Eclipse](https://www.vogella.com/tutorials/JUnit/article.html#eclipse-support-for-junit-4) (this article is written for JUnit 3)
+- [Introduction to JUnit 4](https://www.ibm.com/developerworks/java/tutorials/j-junit4/) (free registration required)
+- [Using JUnit with Eclipse](https://www.vogella.com/tutorials/JUnit/article.html#eclipse-support-for-junit-4) (this article is written for JUnit 3)
 
 ## An overview of this repository
 
