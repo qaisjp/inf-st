@@ -26,7 +26,7 @@ We have written two specifications: **`spec-a.pdf`** and **`spec-b.pdf`**. **`sp
 You are encouraged to write your coursework on DICE. If the code submitted does not compile on DICE, _it is likely to attract a score of 0_.
 
 - You MUST use **[JUnit 4](https://junit.org/junit4/)** as your testing environment.
-- You SHOULD use the [EclEmma](https://www.eclemma.org/) coverage analysis tool.
+- You SHOULD use the [EclEmma](https://www.eclemma.org/) coverage analysis tool. (This is not required for Task 1.)
 - You CAN use the Eclipse IDE.
     - **Why? Is this required?**
     
