@@ -103,3 +103,31 @@ You are expected to submit just one file that contains all your JUnit tests: `Ta
 You should designate **one member of the group** to submit for your whole group.
 
 Submit using the following command `submit st cw1 Task1_Functional.java`.
+
+## **Task 2** - Coverage Analysis
+
+### 2.1
+
+1. Take the JUnit tests you developed in _Task 1_ and measure the **branch coverage achieved**.
+2. Take screenshots showing the coverage achieved by your tests, as reported by a coverage measurement tool like EclEmma.
+
+### 2.2
+
+1. Add more tests and attempt to improve your branch coverage as much as possible.
+2. You may look at the source code and its structure to guide the development of your additional tests.
+3. Please note that you may not be able to attain 100% coverage as there may be parts of the code that are unreachable in the provided implementation.
+4. Measure the **branch coverage achieved** using the tests from _Task 1_ and your new tests from _Task 2.2_.
+5. Take screenshots of these new tests, just like you did in _Task 2.1_.
+
+**Submission**
+
+You are expected to submit:
+
+- Two screenshots showing the different levels of coverage you achieved (`coverage_1.jpg` and `coverage_2.jpg`).
+- A Java file named `Task2_Coverage.java` containing **all the JUnit tests** used to achived maximum coverage.
+
+As before, you should designate **one member of the group** to submit for your whole group.
+
+Submit using the following command:
+- `submit st cw1 Task2_Coverage.java coverage_1.jpg coverage2.jpg <...>`
+- **Note that <...> signifies you submitting any other relevant files.**
