@@ -6,10 +6,16 @@ There was some good structure to the coursework, but overall the quality of the 
 
 Files in the original repo were named terribly, but can still be accessed in the "legacy" folder by their old filenames.
 
-## Deadline
+- **Issue date**: 25th February
+- **Deadline**: 29th March, 6pm
+- **Weighting**: 25% of the course
+- **Groupwork**: groups of _2_, or individually
 
-- Issued: 25th February
-- **Deadline: 29th March, 6pm**
+| Task | Marks out of 100 |
+|------|------------------|
+| Task 1 | 25 marks       |
+| Task 2 | 25 marks       |
+| Task 3 | 50 marks       |
 
 ## Overview
 
