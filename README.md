@@ -11,12 +11,6 @@ Files in the original repo were named terribly, but can still be accessed in the
 - **Weighting**: 25% of the course
 - **Groupwork**: groups of _2_, or individually
 
-| Task | Marks out of 100 |
-|------|------------------|
-| Task 1 | 25 marks       |
-| Task 2 | 25 marks       |
-| Task 3 | 50 marks       |
-
 ## Overview
 
 You will be writing and evaluating tests for a "command line parsing" library we have written.
@@ -25,7 +19,13 @@ We have written two specifications: **`spec-a.pdf`** and **`spec-b.pdf`**. **`sp
 
 - **Task 1** covers _Functional Testing_, a black box testing technique.
 - **Task 2** covers _Coverage Analysis_, which allows us to determine whether our tests cases actually cover our code.
-- **Task 3** covers _Test-Driven Development__, which is an approach to software development where we first write tests, and then write code that satifies our tests.
+- **Task 3** covers _Test-Driven Development_, which is an approach to software development where we first write tests, and then write code that satifies our tests.
+
+| Task | Marks out of 100 |
+|------|------------------|
+| Task 1 | 25 marks       |
+| Task 2 | 25 marks       |
+| Task 3 | 50 marks       |
 
 ## Prerequisites
 
