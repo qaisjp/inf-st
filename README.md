@@ -43,7 +43,7 @@ If you do not know how to use JUnit, here are useful articles:
 
 In the root of this repository, you will find the following files
 
-- **task.pdf**: the three tasks required to complete this coursework.
+- **README.md**: an explanation of the coursework and the tasks you need to complete
 - **parser.jar**: a parser library we have written (compiled).
 - **spec-a.pdf**: the specification for our parser library, as used in tasks 1 and 2 only.
 - **spec-b.pdf**: the specification for our parser library, as used in task 3 only.
