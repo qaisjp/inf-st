@@ -67,4 +67,41 @@ public class Task1_Functional {
 		parser.parse("--output output.txt");
 		assertEquals(parser.getString("o"), "output.txt");
 	}
+
+	@Test
+	public void orderSearch() {
+		parser.add("output", "o", Parser.STRING);
+		parser.add("o", "f", Parser.STRING);
+		parser.parse("--output output.txt --o yada");
+		assertEquals(parser.getString("o"), "yada");
+	}
+
+	@Test
+	public void getLong() {
+		parser.add("int", "i", Parser.INTEGER);
+		parser.add("bool", "b", Parser.BOOLEAN);
+		parser.add("str", "s", Parser.STRING);
+		parser.add("char", "c", Parser.CHAR);
+
+		parser.parse("-i 100 -b -s Hi -c q");
+
+		assertEquals(100, parser.getInteger("int"));
+		assertEquals(true, parser.getBoolean("bool"));
+		assertEquals("Hi", parser.getString("str"));
+		assertEquals('q', parser.getChar("char"));
+	}
+
+	@Test
+	public void defaults() {
+		parser.add("int", "i", Parser.INTEGER);
+		parser.add("bool", "b", Parser.BOOLEAN);
+		parser.add("str", "s", Parser.STRING);
+		parser.add("char", "c", Parser.CHAR);
+		parser.parse("");
+
+		assertEquals(0, parser.getInteger("i"));
+		assertEquals(false, parser.getBoolean("b"));
+		assertEquals("", parser.getString("s"));
+		assertEquals('\0', parser.getChar("c"));
+	}
 }
