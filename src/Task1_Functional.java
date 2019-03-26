@@ -15,16 +15,7 @@ public class Task1_Functional {
 	}
 
 	@Test
-	public void example() {
-		parser.add("output", "o", Parser.STRING);
-		parser.parse("--output=output.txt");
-		assertEquals(parser.getString("o"), "output.txt");
-	}
-
-	@Test
-	@Ignore
 	public void shortInt() {
-
 	}
 
 	@Test
@@ -46,26 +37,34 @@ public class Task1_Functional {
 	}
 
 	@Test
-	@Ignore
-	public void shortStr() {
-
+	public void shortStrEq() {
+		// Short, equals separated
+		parser.add("output", "o", Parser.STRING);
+		parser.parse("-o=output.txt");
+		assertEquals(parser.getString("o"), "output.txt");
 	}
 
 	@Test
-	@Ignore
-	public void longStr() {
-
+	public void shortStrSp() {
+		// Short, space separated
+		parser.add("output", "o", Parser.STRING);
+		parser.parse("-o output.txt");
+		assertEquals(parser.getString("o"), "output.txt");
 	}
 
 	@Test
-	@Ignore
-	public void shortChar() {
-
+	public void longStrEq() {
+		// Long, equals separated
+		parser.add("output", "o", Parser.STRING);
+		parser.parse("--output=output.txt");
+		assertEquals(parser.getString("o"), "output.txt");
 	}
 
 	@Test
-	@Ignore
-	public void longChar() {
-
+	public void longStrSp() {
+		// Long, space separated
+		parser.add("output", "o", Parser.STRING);
+		parser.parse("--output output.txt");
+		assertEquals(parser.getString("o"), "output.txt");
 	}
 }
