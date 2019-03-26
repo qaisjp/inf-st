@@ -62,6 +62,21 @@ In the `src` folder you will find:
     - This `Task3` file is for both parts, so this file will need to be copied, with `_N` changed to `_1` or `_2` accordingly)
 
 
+## How to set up your Eclipse workspace
+
+These are instructions for setting up your Eclipse workspace in a way that doesn't mess up your repository.
+
+1. Clone this repository somewhere
+1. Create a workspace anywhere
+1. Create a Java project called "inf-st" or whatever (do not link to any existing folder)
+1. Right click `src` in the package explorer and select "Delete"
+1. Right click `inf-st` (your Java project), select `Build Path -> Link Source...`
+1. A "Source Folder" window should appear. Under "Linked folder location" hit "Browse..."
+1. In the browse modal, select the `src` folder inside this repository. Hit OK.
+1. The "Folder name:" field should say "src", and hit Finish
+1. ???
+1. PROFIT!
+
 ## **Task 1** - Functional Testing
 
 Functional Testing is a black box testing technique. You should use 
