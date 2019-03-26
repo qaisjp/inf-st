@@ -41,7 +41,7 @@ public class Task1_Functional {
 		// Short, equals separated
 		parser.add("output", "o", Parser.STRING);
 		parser.parse("-o=output.txt");
-		assertEquals(parser.getString("o"), "output.txt");
+		assertEquals("output.txt", parser.getString("o"));
 	}
 
 	@Test
@@ -49,7 +49,7 @@ public class Task1_Functional {
 		// Short, space separated
 		parser.add("output", "o", Parser.STRING);
 		parser.parse("-o output.txt");
-		assertEquals(parser.getString("o"), "output.txt");
+		assertEquals("output.txt", parser.getString("o"));
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class Task1_Functional {
 		// Long, equals separated
 		parser.add("output", "o", Parser.STRING);
 		parser.parse("--output=output.txt");
-		assertEquals(parser.getString("o"), "output.txt");
+		assertEquals("output.txt", parser.getString("o"));
 	}
 
 	@Test
@@ -65,7 +65,7 @@ public class Task1_Functional {
 		// Long, space separated
 		parser.add("output", "o", Parser.STRING);
 		parser.parse("--output output.txt");
-		assertEquals(parser.getString("o"), "output.txt");
+		assertEquals("output.txt", parser.getString("o"));
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class Task1_Functional {
 		parser.add("output", "o", Parser.STRING);
 		parser.add("o", "f", Parser.STRING);
 		parser.parse("--output output.txt --o yada");
-		assertEquals(parser.getString("o"), "yada");
+		assertEquals("yada", parser.getString("o"));
 	}
 
 	@Test
