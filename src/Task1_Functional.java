@@ -1,7 +1,6 @@
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import st.Parser;
@@ -9,33 +8,46 @@ import st.Parser;
 public class Task1_Functional {
 	private Parser parser;
 
+	/**
+	 * 2. Parser Initialisation
+	 */
 	@Before
 	public void setup() {
 		parser = new Parser();
 	}
 
-	@Test
-	public void shortInt() {
-	}
+	/**
+	 * 3. Add options with a shortcut
+	 *
+	 * void add(String option_name, String shortcut, int value_type)
+	 *
+	 * Example:
+	 * - parser.add("output" , "o" , Parser.STRING);
+	 * - parser.add("optimise", "O" , Parser.BOOLEAN);
+	 *
+	 */
 
-	@Test
-	@Ignore
-	public void longInt() {
+	/**
+	 * 4. Add options without a shortcut
+	 *
+	 * void add(String option_name, int value_type)
+	 *
+	 * Example:
+	 * - parser.add( "output" , Parser.STRING);
+	 * - parser.add( "optimise" , Parser.BOOLEAN);
+	 *
+	 */
 
-	}
-
-	@Test
-	@Ignore
-	public void shortBool() {
-
-	}
-
-	@Test
-	@Ignore
-	public void longBool() {
-
-	}
-
+	/**
+	 * 5. Parse command line options
+	 *
+	 * int parse(String command_line_options)
+	 *
+	 * Example:
+	 * - parser.parse( "--input 1.txt --output=2.txt" );
+	 * - parser.parse( "-O" );
+	 *
+	 */
 	@Test
 	public void shortStrEq() {
 		// Short, equals separated
@@ -88,7 +100,7 @@ public class Task1_Functional {
 	 */
 
 	/*
-	 * 1. The order of search is full name of options first and then shortcut. For
+	 * 6.1. The order of search is full name of options first and then shortcut. For
 	 * example, if “o” exists as a full name for an option and a shortcut for
 	 * another option, this function returns the value of the first option.
 	 */
@@ -101,7 +113,7 @@ public class Task1_Functional {
 	}
 
 	/*
-	 * 2. If the option is not defined or not provided a value, a default value is
+	 * 6.2. If the option is not defined or not provided a value, a default value is
 	 * used: 0 for INTEGER, false for BOOLEAN, an empty String “” for STRING and
 	 * ‘\0’ for CHAR.
 	 */
