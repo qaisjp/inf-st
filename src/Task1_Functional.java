@@ -80,6 +80,39 @@ public class Task1_Functional {
 		assertEquals("output.txt", parser.getString("o"));
 	}
 
+	/*
+	 * 6. Retrieve information
+	 *
+	 * int getInteger(String option)
+	 * boolean getBoolean(String option)
+	 * String getString(String option)
+	 * char getChar(String option)
+	 *
+	 */
+
+	/*
+	 * getShort tests whether parser.getType("x") works where "x" is the shortcut
+	 * setting for a specific type, and "getType" is the correct getter.
+	 */
+	@Test
+	public void getShort() {
+		parser.add("int", "i", Parser.INTEGER);
+		parser.add("bool", "b", Parser.BOOLEAN);
+		parser.add("str", "s", Parser.STRING);
+		parser.add("char", "c", Parser.CHAR);
+
+		parser.parse("-i 100 -b -s Hi -c q");
+
+		assertEquals(100, parser.getInteger("i"));
+		assertEquals(true, parser.getBoolean("b"));
+		assertEquals("Hi", parser.getString("s"));
+		assertEquals('q', parser.getChar("c"));
+	}
+
+	/*
+	 * getLong tests whether parser.getType("xxx") works where "xxx" is the long
+	 * setting for a specific type, and "getType" is the correct getter.
+	 */
 	@Test
 	public void getLong() {
 		parser.add("int", "i", Parser.INTEGER);
@@ -94,10 +127,6 @@ public class Task1_Functional {
 		assertEquals("Hi", parser.getString("str"));
 		assertEquals('q', parser.getChar("char"));
 	}
-
-	/*
-	 * 6. Retrieve information
-	 */
 
 	/*
 	 * 6.1. The order of search is full name of options first and then shortcut. For
