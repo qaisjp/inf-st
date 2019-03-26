@@ -69,14 +69,6 @@ public class Task1_Functional {
 	}
 
 	@Test
-	public void orderSearch() {
-		parser.add("output", "o", Parser.STRING);
-		parser.add("o", "f", Parser.STRING);
-		parser.parse("--output output.txt --o yada");
-		assertEquals("yada", parser.getString("o"));
-	}
-
-	@Test
 	public void getLong() {
 		parser.add("int", "i", Parser.INTEGER);
 		parser.add("bool", "b", Parser.BOOLEAN);
@@ -91,6 +83,28 @@ public class Task1_Functional {
 		assertEquals('q', parser.getChar("char"));
 	}
 
+	/*
+	 * 6. Retrieve information
+	 */
+
+	/*
+	 * 1. The order of search is full name of options first and then shortcut. For
+	 * example, if “o” exists as a full name for an option and a shortcut for
+	 * another option, this function returns the value of the first option.
+	 */
+	@Test
+	public void orderSearch() {
+		parser.add("output", "o", Parser.STRING);
+		parser.add("o", "f", Parser.STRING);
+		parser.parse("--output output.txt --o yada");
+		assertEquals("yada", parser.getString("o"));
+	}
+
+	/*
+	 * 2. If the option is not defined or not provided a value, a default value is
+	 * used: 0 for INTEGER, false for BOOLEAN, an empty String “” for STRING and
+	 * ‘\0’ for CHAR.
+	 */
 	@Test
 	public void defaults() {
 		parser.add("int", "i", Parser.INTEGER);
