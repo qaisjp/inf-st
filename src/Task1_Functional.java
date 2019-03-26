@@ -63,6 +63,145 @@ public class Task1_Functional {
 	 */
 
 	/**
+	 * 3.1. Adding an option with the same name as an existing option will override
+	 * the option defined previously.
+	 */
+	@Test
+	public void addOverrideDupe() {
+		parser.add("output", "f", Parser.STRING);
+		parser.add("output", "o", Parser.STRING);
+
+		parser.parse("-o output.txt");
+		assertEquals("output.txt", parser.getString("o"));
+		assertEquals("", parser.getString("f"));
+	}
+
+	/**
+	 * 3.2. Name and shortcut of options should only contain numbers, alphabets and
+	 * underscores. Numbers cannot appear as the first character. A runtime
+	 * exception is thrown otherwise.
+	 */
+	@Test
+	public void addCheckCharsValid() {
+		parser.add("out_p00t", "o", Parser.STRING);
+
+		parser.parse("--out_p00t output.txt");
+		assertEquals("output.txt", parser.getString("out_p00t"));
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void addCheckCharsInvalidStartNum() {
+		parser.add("000000a", "o", Parser.STRING);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void addCheckCharsInvalidChars() {
+		parser.add("a_!!!!", "o", Parser.STRING);
+	}
+
+	/**
+	 * 3.3. Option names and shortcuts are case-sensitive.
+	 */
+	@Test
+	public void addCaseSensitive() {
+		Parser parser2 = new Parser();
+		Parser[] parsers = {parser, parser2};
+
+		for (Parser p : parsers) {
+			p.add("output", "o", Parser.STRING);
+			p.add("oUtPuT", "O", Parser.STRING);
+		}
+
+		parser.parse("--output output.txt --oUtPuT OUTPUT.txt");
+		parser2.parse("-o output.txt -O OUTPUT.txt");
+
+		for (Parser p : parsers) {
+			assertEquals("output.txt", p.getString("o"));
+			assertEquals("output.txt", p.getString("output"));
+			assertEquals("OUTPUT.txt", p.getString("O"));
+			assertEquals("OUTPUT.txt", p.getString("oUtPuT"));
+		}
+	}
+
+	/**
+	 * 3.4. An option can have a shortcut that is the same as the name of another
+	 * option. For example, the user can define an option whose name is “output”
+	 * with a shortcut “o” and another option whose name is “o”. When assigning
+	 * values to these options, “--output” and “-o” is used for the first option and
+	 * “--o” is used for the second option.
+	 */
+	@Test
+	public void addCrossNameMatch() {
+		parser.add("output", "o", Parser.STRING);
+
+		// fullname/shortcut precedence is defined by test 6.1
+		// so we work around it here by having a shortcut "f"
+		parser.add("o", "f", Parser.STRING);
+
+		parser.parse("-o output.txt --o name.txt");
+
+		assertEquals("output.txt", parser.getString("output"));
+		assertEquals("name.txt", parser.getString("f"));
+	}
+
+	/**
+	 * 3.5. An option can have a shortcut that is the same as the name of another
+	 * option. For example, the user can define an option whose name is “output”
+	 * with a shortcut “o” and another option whose name is “o”. When assigning
+	 * values to these options, “--output” and “-o” is used for the first option and
+	 * “--o” is used for the second option.
+	 */
+
+	// Better to use a JUnit parameterized class here,
+	// but due to coursework restrictions we can't properly do this.
+	public void addBoolOpts(String opts, boolean expected) {
+		Parser p = new Parser();
+		p.add("optimise", "O", Parser.BOOLEAN);
+		p.parse(opts);
+		assertEquals(expected, p.getBoolean("optimise"));
+	}
+
+	@Test
+	public void addTrueShortPresent() {
+		addBoolOpts("-O", true);
+		addBoolOpts("--optimise", true);
+	}
+
+	@Test
+	public void addTrueEqTrue() {
+		addBoolOpts("-O=true", true);
+		addBoolOpts("--optimise=true", true);
+	}
+
+	@Test
+	public void addTrueEq1() {
+		addBoolOpts("-O=1", true);
+		addBoolOpts("--optimise=1", true);
+	}
+
+	@Test
+	public void addTrueGarbage() {
+		addBoolOpts("-O yeah", true);
+		addBoolOpts("--optimise yeah", true);
+		addBoolOpts("-O=totes", true);
+	}
+
+	@Test
+	public void addFalseNotPresent() {
+		addBoolOpts("", false);
+	}
+
+	@Test
+	public void addFalseEqFalse() {
+		addBoolOpts("-O false", false);
+	}
+
+	@Test
+	public void addFalseEqZero() {
+		addBoolOpts("--optimise=0", false);
+	}
+
+	/**
 	 * 4. Add options without a shortcut
 	 *
 	 * void add(String option_name, int value_type)
