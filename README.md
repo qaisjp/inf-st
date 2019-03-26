@@ -79,7 +79,7 @@ These are instructions for setting up your Eclipse workspace in a way that doesn
 
 ## **Task 1** - Functional Testing
 
-Functional Testing is a black box testing technique. You should use 
+Functional Testing is a black box testing technique. You should use `spec-a.pdf` as your specification for input and output.
 
 You will be required to populate `Task1_Functional.java` with tests that verify the effect that certain input has on the output.
 
