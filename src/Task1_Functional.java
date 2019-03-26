@@ -17,36 +17,7 @@ public class Task1_Functional {
 	}
 
 	/**
-	 * 3. Add options with a shortcut
-	 *
-	 * void add(String option_name, String shortcut, int value_type)
-	 *
-	 * Example:
-	 * - parser.add("output" , "o" , Parser.STRING);
-	 * - parser.add("optimise", "O" , Parser.BOOLEAN);
-	 *
-	 */
-
-	/**
-	 * 4. Add options without a shortcut
-	 *
-	 * void add(String option_name, int value_type)
-	 *
-	 * Example:
-	 * - parser.add( "output" , Parser.STRING);
-	 * - parser.add( "optimise" , Parser.BOOLEAN);
-	 *
-	 */
-
-	/**
-	 * 5. Parse command line options
-	 *
-	 * int parse(String command_line_options)
-	 *
-	 * Example:
-	 * - parser.parse( "--input 1.txt --output=2.txt" );
-	 * - parser.parse( "-O" );
-	 *
+	 * UNSORTED
 	 */
 	@Test
 	public void shortStrEq() {
@@ -79,6 +50,40 @@ public class Task1_Functional {
 		parser.parse("--output output.txt");
 		assertEquals("output.txt", parser.getString("o"));
 	}
+
+	/**
+	 * 3. Add options with a shortcut
+	 *
+	 * void add(String option_name, String shortcut, int value_type)
+	 *
+	 * Example:
+	 * - parser.add("output" , "o" , Parser.STRING);
+	 * - parser.add("optimise", "O" , Parser.BOOLEAN);
+	 *
+	 */
+
+	/**
+	 * 4. Add options without a shortcut
+	 *
+	 * void add(String option_name, int value_type)
+	 *
+	 * Example:
+	 * - parser.add( "output" , Parser.STRING);
+	 * - parser.add( "optimise" , Parser.BOOLEAN);
+	 *
+	 */
+
+	/**
+	 * 5. Parse command line options
+	 *
+	 * int parse(String command_line_options)
+	 *
+	 * Example:
+	 * - parser.parse( "--input 1.txt --output=2.txt" );
+	 * - parser.parse( "-O" );
+	 *
+	 */
+
 
 	/*
 	 * 6. Retrieve information
