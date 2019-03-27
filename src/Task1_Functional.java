@@ -213,6 +213,22 @@ public class Task1_Functional {
 	 */
 
 	/**
+	 * 4.1. Same as 3.1.
+	 * Adding an option with the same name as an existing option will override
+	 * the option defined previously.
+	 *
+	 * TODO(q): this test could be improved
+	 */
+	@Test
+	public void longaddOverrideDupe() {
+		parser.add("output", Parser.INTEGER);
+		parser.add("output", Parser.STRING);
+
+		parser.parse("--output output.txt");
+		assertEquals("output.txt", parser.getString("output"));
+	}
+
+	/**
 	 * 5. Parse command line options
 	 *
 	 * int parse(String command_line_options)
