@@ -34,6 +34,7 @@ public class Task2_Coverage {
 		assertEquals(0, parser.getInteger("strA"));
 		assertEquals(123, parser.getInteger("strB"));
 		assertEquals('a', parser.getInteger("char"));
+		assertEquals(0, parser.getInteger("unk"));
 	}
 
 	@Test
@@ -446,22 +447,22 @@ public class Task2_Coverage {
 		assertEquals('\0', parser.getChar("c"));
 	}
 
-    @Test
+	@Test
 	public void testInvalidArgStart() {
 		parser.add("output", "o", Parser.STRING);
-        assertEquals(-3, parser.parse("+output"));
+		assertEquals(-3, parser.parse("+output"));
 	}
 
-    @Test
+	@Test
 	public void testNullInput() {
 		parser.add("output", "o", Parser.STRING);
-        assertEquals(-1, parser.parse(null));
+		assertEquals(-1, parser.parse(null));
 	}
 
 
-    @Test
+	@Test
 	public void testSpaceInArg() {
 		parser.add("output", "o", Parser.STRING);
-        assertEquals(-3, parser.parse("- -output=a.out"));
+		assertEquals(-3, parser.parse("- -output=a.out"));
 	}
 }
