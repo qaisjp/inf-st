@@ -18,6 +18,23 @@ public class Task2_Coverage {
 		parser = new Parser();
 	}
 
+	@Test
+	public void stringer() {
+		parser.add("output", "o", Parser.STRING);
+		parser.add("input", "i", Parser.STRING);
+		parser.add("debug", Parser.BOOLEAN);
+		parser.add("verbose", Parser.BOOLEAN);
+		parser.parse("-i input.txt --debug");
+
+		String expected = "OptionMap [options=\n" +
+				"	{name=output, shortcut=o, type=3, value=}\n" +
+				"	{name=input, shortcut=i, type=3, value=input.txt}\n" +
+				"	{name=debug, shortcut=, type=2, value=true}\n" +
+				"	{name=verbose, shortcut=, type=2, value=}\n" +
+				"]";
+		assertEquals(expected, parser.toString());
+	}
+
 	/**
 	 * UNSORTED
 	 */
@@ -61,7 +78,7 @@ public class Task2_Coverage {
 	 * Example: - parser.add("output" , "o" , Parser.STRING); -
 	 * parser.add("optimise", "O" , Parser.BOOLEAN);
 	 *
-	 * 
+	 *
 	 * 3.1. Adding an option with the same name as an existing option will override
 	 * the option defined previously.
 	 */
@@ -208,7 +225,7 @@ public class Task2_Coverage {
 	 * Example: - parser.add( "output" , Parser.STRING); - parser.add( "optimise" ,
 	 * Parser.BOOLEAN);
 	 *
-	 * 
+	 *
 	 * 4.1. Same as 3.1. Adding an option with the same name as an existing option
 	 * will override the option defined previously.
 	 *
