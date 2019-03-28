@@ -33,7 +33,7 @@ public class Task3_TDD_1 {
 	@Test
 	public void multidigit() {
 		parser.add("list", "l", Parser.STRING);
-		parser.parse("--list {1337, 69}");
+		parser.parse("--list '{1337, 69}'");
 
 		List<Integer> l = parser.getIntegerList("list");
 		assertEquals(Arrays.asList(69, 1337), l);
