@@ -1,9 +1,11 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import st.Parser;
-
-import static org.junit.Assert.*;
 
 public class Task1_Functional {
 	private Parser parser;
@@ -249,9 +251,9 @@ public class Task1_Functional {
 		assertEquals("", parser.getString("output"));
 	}
 
-    //	Assigning a value to the option can either be using a “=” or a space. ​
-    //	option=value​ and option value​ are both valid.
-    @Test
+	//	Assigning a value to the option can either be using a “=” or a space. ​
+	//	option=value​ and option value​ are both valid.
+	@Test
 	public void assignUsingEqual() {
 		parser.add("a_test", "a", Parser.STRING);
 		parser.add("b_test", "b", Parser.STRING);
@@ -264,7 +266,7 @@ public class Task1_Functional {
 	// The user can use quotation marks, single or double,
 	// optionally around the value. option=“value”​ , ​ option=’value’​ and ​
 	// option=value​ are all valid and result in the same effect. .
-    @Test
+	@Test
 	public void quotationMarks() {
 		parser.add("output", Parser.STRING);
 		parser.add("input", Parser.STRING);
@@ -280,7 +282,7 @@ public class Task1_Functional {
 	// value string are viewed as part of the string and vice versa.
 	// For example, ​ option=’value=”abc”​ ’ is valid and the value of the
 	// option is value=”abc”.
-    @Test
+	@Test
 	public void nestedQuotationMarks() {
 		parser.add("output", Parser.STRING);
 
@@ -319,11 +321,14 @@ public class Task1_Functional {
 	@Test
 	public void multipleTimes() {
 		parser.add("output", Parser.STRING);
+		parser.add("input", Parser.STRING);
 
-		parser.parse("--output=a");
+		parser.parse("--output=a --input=b");
 		assertEquals("a", parser.getString("output"));
+		assertEquals("b", parser.getString("input"));
 		parser.parse("--output=b");
 		assertEquals("b", parser.getString("output"));
+		assertEquals("b", parser.getString("input"));
 	}
 
 
