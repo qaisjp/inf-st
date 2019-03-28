@@ -266,7 +266,7 @@ public class Task1_Functional {
 	// optionally around the value. option=“value”​ , ​ option=’value’​ and ​
 	// option=value​ are all valid and result in the same effect. .
     @Test
-	public void quotation_marks() {
+	public void quotationMarks() {
 		parser.add("output", Parser.STRING);
 		parser.add("input", Parser.STRING);
 
