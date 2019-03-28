@@ -433,4 +433,17 @@ public class Task2_Coverage {
 		parser.add("output", "o", Parser.STRING);
         assertEquals(-3, parser.parse("+output"));
 	}
+
+    @Test
+	public void testNullInput() {
+		parser.add("output", "o", Parser.STRING);
+        assertEquals(-1, parser.parse(null));
+	}
+
+
+    @Test
+	public void testSpaceInArg() {
+		parser.add("output", "o", Parser.STRING);
+        assertEquals(-3, parser.parse("- -output=a.out"));
+	}
 }
