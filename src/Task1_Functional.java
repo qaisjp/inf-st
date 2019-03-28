@@ -284,9 +284,11 @@ public class Task1_Functional {
 	@Test
 	public void nestedQuotationMarks() {
 		parser.add("output", Parser.STRING);
+		parser.add("input", Parser.STRING);
 
-		parser.parse("--output='value=\"out.txt\"'");
+		parser.parse("--output='value=\"out.txt\"' --input=\"value='in.txt'\"");
 		assertEquals("value=\"out.txt\"", parser.getString("output"));
+		assertEquals("value='in.txt'", parser.getString("input"));
 	}
 
 
