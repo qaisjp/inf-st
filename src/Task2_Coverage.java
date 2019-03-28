@@ -495,11 +495,11 @@ public class Task2_Coverage {
 	}
 
 
-    @Test
+	@Test
 	public void testDuplicateOption() {
-        OptionMap optionMap = new OptionMap();
+		OptionMap optionMap = new OptionMap();
 		optionMap.store("bool", "b", Parser.INTEGER);
 		optionMap.store("bool", "b", Parser.BOOLEAN);
 	}
-	
+
 }
