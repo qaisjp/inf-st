@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import st.Parser;
 
-public class Task3_TDD_N {
+public class Task3_TDD_1 {
 	private Parser parser;
 
 	@Before
