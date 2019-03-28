@@ -1,5 +1,4 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +36,7 @@ public class Task3_TDD_1 {
 		parser.parse("--list {1337, 69}");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(l, Arrays.asList(1337, 69));
+		assertEquals(Arrays.asList(69, 1337), l);
 
 	}
 
@@ -72,7 +71,7 @@ public class Task3_TDD_1 {
 		parser.parse("--list '1,2) >4!5{_<3-6}'");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(l, Arrays.asList(1, 2, 3, 4, 4, 5, 5, 6 ));
+		assertEquals(Arrays.asList(1, 2, 3, 4, 4, 5, 5, 6), l);
 
 	}
 
@@ -87,7 +86,7 @@ public class Task3_TDD_1 {
 		parser.parse("-f 4-7 -b 7-4");
 
 		List<Integer> f = parser.getIntegerList("forwards");
-		assertEquals(f, Arrays.asList(4, 5, 6, 7));
+		assertEquals(Arrays.asList(4, 5, 6, 7), f);
 
 		List<Integer> b = parser.getIntegerList("backwards");
 		assertEquals(Arrays.asList(4, 5, 6, 7), b);
