@@ -501,8 +501,5 @@ public class Task2_Coverage {
 		optionMap.store("bool", "b", Parser.INTEGER);
 		optionMap.store("bool", "b", Parser.BOOLEAN);
 	}
-
-
-
-
+	
 }
