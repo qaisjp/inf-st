@@ -25,7 +25,7 @@ public class Task3_TDD_1 {
 		parser.parse("--list {1}");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(new Integer[] { 0 }, l);
+		assertEquals(new Integer[] { 1 }, l);
 	}
 
 	@Test
