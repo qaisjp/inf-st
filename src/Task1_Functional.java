@@ -241,11 +241,15 @@ public class Task1_Functional {
 	//  The prefix ​ - ​ is used for the shortcut version of the option.
 
 	@Test
-	public void fullNameAndShortNameAreDistinct() {
+	public void fullNameIsNotShortName() {
 		parser.add("output", "o", Parser.STRING);
-		// this should not work
 		parser.parse("-output output.txt");
 		assertEquals("", parser.getString("output"));
+	}
+
+	@Test
+	public void shortNameIsNotFullName() {
+		parser.add("output", "o", Parser.STRING);
 		parser.parse("--o output.txt");
 		assertEquals("", parser.getString("output"));
 	}
