@@ -2,7 +2,6 @@ package st;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Parser {
@@ -34,13 +33,13 @@ public class Parser {
 			try {
 				result = Integer.parseInt(value);
 			} catch (Exception e) {
-		        try {
-		            new BigInteger(value);
-		        } catch (Exception e1) {
-		            result = 0;
-		        }
-		        result = 0;
-		    }
+				try {
+					new BigInteger(value);
+				} catch (Exception e1) {
+					result = 0;
+				}
+				result = 0;
+			}
 			break;
 		case BOOLEAN:
 			if (getBoolean(option) == false) {
@@ -50,18 +49,18 @@ public class Parser {
 			}
 			break;
 		case STRING:
-		    int power = 1;
-		    result = 0;
-		    char c;
-		    for (int i = value.length() - 1; i >= 0; --i){
-		        c = value.charAt(i);
-		        if (!Character.isDigit(c)) return 0;
-		        result = result + power * (c - '0');
-		        power *= 10;
-		    }
-		    break;
+			int power = 1;
+			result = 0;
+			char c;
+			for (int i = value.length() - 1; i >= 0; --i){
+				c = value.charAt(i);
+				if (!Character.isDigit(c)) return 0;
+				result = result + power * (c - '0');
+				power *= 10;
+			}
+			break;
 		case CHAR:
-			result = (int)getChar(option);
+			result = getChar(option);
 			break;
 		default:
 			result = 0;
@@ -198,57 +197,25 @@ public class Parser {
 		return 0;
 	}
 
-	public List<Integer> getIntegerString(String option) {
+	public List<Integer> getIntegerList(String option) {
 		String strList = getString(option);
 
 		// first we need to separate into tokens:
-		List<Character> nums = Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
 		int length = strList.length();
 
-		int char_index = 0;
+		ArrayList<Integer> result = new ArrayList<>();
+		String currentInt = "";
 
-		ArrayList<Integer> parsed_nums = new ArrayList<>();
-		StringBuilder currentInt = new StringBuilder();
-		while (char_index < length) {
-			char current_char = strList.charAt(char_index);
-			if (nums.contains(current_char)) {
-				currentInt.append(current_char);
+		for (char c : strList.toCharArray()) {
+			if (Character.isDigit(c)) {
+				currentInt += c;
+			} else if (!currentInt.isEmpty()) {
+				result.add(Integer.parseInt(currentInt));
+				currentInt = "";
 			}
-			if ()
-
-
-
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		return result;
 	}
 
 
