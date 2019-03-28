@@ -2,6 +2,7 @@ package st;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Parser {
@@ -200,21 +201,47 @@ public class Parser {
 	public List<Integer> getIntegerList(String option) {
 		String strList = getString(option);
 
-		// first we need to separate into tokens:
-		int length = strList.length();
-
 		ArrayList<Integer> result = new ArrayList<>();
+		ArrayList<Integer> errorList = new ArrayList<>();
 		String currentInt = "";
+		boolean ranged = false;
+		int lowerRange = 0;
 
 		for (char c : strList.toCharArray()) {
 			if (Character.isDigit(c)) {
 				currentInt += c;
+			} else if (c == '-') {
+				if (currentInt.isEmpty()) {
+					// Start of string, so unary minus
+					currentInt += c;
+				} else if (!ranged) {
+					// Start a range
+					ranged = true;
+					lowerRange = Integer.parseInt(currentInt);
+					currentInt = "";
+				} else {
+					// We are already in a range, so we can't start another one
+					return errorList;
+				}
 			} else if (!currentInt.isEmpty()) {
-				result.add(Integer.parseInt(currentInt));
+				int n = Integer.parseInt(currentInt);
+				if (ranged) {
+					if (n < lowerRange) {
+						int temp = n;
+						n = lowerRange;
+						lowerRange = temp;
+					}
+					for (int i = lowerRange; i < n; i++) {
+						result.add(i);
+					}
+				}
+				result.add(n);
 				currentInt = "";
+				ranged = false;
 			}
 		}
 
+		Collections.sort(result);
 		return result;
 	}
 
