@@ -154,8 +154,7 @@ public class Task1_Functional {
 
 	// Better to use a JUnit parameterized class here,
 	// but due to coursework restrictions we can't properly do this.
-	@SuppressWarnings("WeakerAccess")
-	public void addBoolOpts(String opts, boolean expected) {
+	private void addBoolOpts(String opts, boolean expected) {
 		Parser p = new Parser();
 		p.add("optimise", "O", Parser.BOOLEAN);
 		p.parse(opts);
