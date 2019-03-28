@@ -199,7 +199,7 @@ public class Parser {
 	}
 
 	public List<Integer> getIntegerList(String option) {
-		String strList = getString(option);
+		String strList = getString(option) + "!";
 
 		ArrayList<Integer> result = new ArrayList<>();
 		ArrayList<Integer> errorList = new ArrayList<>();
@@ -219,14 +219,16 @@ public class Parser {
 					ranged = true;
 					lowerRange = Integer.parseInt(currentInt);
 					currentInt = "";
+					System.out.println("Find lower range " + lowerRange);
 				} else {
 					// We are already in a range, so we can't start another one
 					return errorList;
 				}
 			} else if (!currentInt.isEmpty()) {
 				int n = Integer.parseInt(currentInt);
+				System.out.println("Found upper range " + n);
 				if (ranged) {
-					if (n < lowerRange) {
+					if (lowerRange > n) {
 						int temp = n;
 						n = lowerRange;
 						lowerRange = temp;

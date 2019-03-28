@@ -20,13 +20,22 @@ public class Task3_TDD_2 {
 	 * UNSORTED
 	 */
 	@Test
-	public void negative() {
+	public void badRange() {
 		parser.add("list", "l", Parser.STRING);
-		parser.parse("--list {-1}");
+		parser.parse("--list 1---1");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(-1, (int) l.get(0));
+		assertEquals(0, l.size());
+	}
+
+	@Test
+	public void negative() {
+		parser.add("list", "l", Parser.STRING);
+		parser.parse("--list -1");
+
+		List<Integer> l = parser.getIntegerList("list");
 		assertEquals(1, l.size());
+		assertEquals(-1, (int) l.get(0));
 	}
 
 	@Test
@@ -92,7 +101,7 @@ public class Task3_TDD_2 {
 	public void range() {
 		parser.add("forwards", "f", Parser.STRING);
 		parser.add("backwards", "b", Parser.STRING);
-		parser.parse("-f 4-7 -b 7-4");
+		parser.parse("-f '4-7' -b 7-4");
 
 		List<Integer> f = parser.getIntegerList("forwards");
 		assertEquals(Arrays.asList(4, 5, 6, 7), f);
