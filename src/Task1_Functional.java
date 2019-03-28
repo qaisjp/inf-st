@@ -262,6 +262,19 @@ public class Task1_Functional {
 		assertEquals("b_file.txt", parser.getString("b_test"));
 	}
 
+	// - [ ]  The user can use quotation marks, single or double,
+	// optionally around the value. option=“value”​ , ​ option=’value’​ and ​
+	// option=value​ are all valid and result in the same effect. .
+    @Test
+	public void quotation_marks() {
+		parser.add("output", Parser.STRING);
+		parser.add("input", Parser.STRING);
+
+		parser.parse("--output=\"out.txt\" --input='in.txt'");
+		assertEquals("out.txt", parser.getString("output"));
+		assertEquals("in.txt", parser.getString("input"));
+	}
+
 
 
 
