@@ -18,6 +18,36 @@ public class Task2_Coverage {
 		parser = new Parser();
 	}
 
+	@Test(expected = RuntimeException.class)
+	public void isOptionValidNullStr() {
+		parser.add(null, Parser.INTEGER);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void isOptionValidNullShort() {
+		parser.add("asdf", null, Parser.INTEGER);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void isOptionValidNegativeType() {
+		parser.add("asdf", -1);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void isOptionValidMassiveType() {
+		parser.add("asdf", 99991);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void isOptionValidEmpty() {
+		parser.add("", Parser.STRING);
+	}
+
+	@Test(expected = RuntimeException.class)
+	public void isOptionValidBadShort() {
+		parser.add("asdf", "!", Parser.STRING);
+	}
+
 	@Test
 	public void getInteger() {
 		parser.add("big", Parser.INTEGER);
@@ -45,12 +75,10 @@ public class Task2_Coverage {
 		parser.add("verbose", Parser.BOOLEAN);
 		parser.parse("-i input.txt --debug");
 
-		String expected = "OptionMap [options=\n" +
-				"	{name=output, shortcut=o, type=3, value=}\n" +
-				"	{name=input, shortcut=i, type=3, value=input.txt}\n" +
-				"	{name=debug, shortcut=, type=2, value=true}\n" +
-				"	{name=verbose, shortcut=, type=2, value=}\n" +
-				"]";
+		String expected = "OptionMap [options=\n" + "	{name=output, shortcut=o, type=3, value=}\n"
+				+ "	{name=input, shortcut=i, type=3, value=input.txt}\n"
+				+ "	{name=debug, shortcut=, type=2, value=true}\n" + "	{name=verbose, shortcut=, type=2, value=}\n"
+				+ "]";
 		assertEquals(expected, parser.toString());
 	}
 
@@ -458,7 +486,6 @@ public class Task2_Coverage {
 		parser.add("output", "o", Parser.STRING);
 		assertEquals(-1, parser.parse(null));
 	}
-
 
 	@Test
 	public void testSpaceInArg() {
