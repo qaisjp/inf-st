@@ -2,6 +2,7 @@
 .class
 .idea/
 inf-st.iml
+out/
 
 # Created by https://www.gitignore.io/api/eclipse
 # Edit at https://www.gitignore.io/?templates=eclipse
