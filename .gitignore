@@ -1,6 +1,7 @@
 .DS_Store/
 .class
-
+.idea/
+inf-st.iml
 
 # Created by https://www.gitignore.io/api/eclipse
 # Edit at https://www.gitignore.io/?templates=eclipse
