@@ -313,8 +313,18 @@ public class Task1_Functional {
 	}
 
 
+	//	This method can be used multiple times as shown in the example above.
+	//	After these two function calls, three options are assigned to values
+	//	and can be retrieved by the following methods.
+	@Test
+	public void multipleTimes() {
+		parser.add("output", Parser.STRING);
 
-
+		parser.parse("--output=a");
+		assertEquals("a", parser.getString("output"));
+		parser.parse("--output=b");
+		assertEquals("b", parser.getString("output"));
+	}
 
 
 	/*
