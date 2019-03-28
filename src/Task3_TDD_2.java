@@ -20,6 +20,16 @@ public class Task3_TDD_2 {
 	 * UNSORTED
 	 */
 	@Test
+	public void negative() {
+		parser.add("list", "l", Parser.STRING);
+		parser.parse("--list {-1}");
+
+		List<Integer> l = parser.getIntegerList("list");
+		assertEquals(-1, (int) l.get(0));
+		assertEquals(1, l.size());
+	}
+
+	@Test
 	public void singular() {
 		parser.add("list", "l", Parser.STRING);
 		parser.parse("--list {1}");
