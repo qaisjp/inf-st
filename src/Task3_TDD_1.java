@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -35,7 +37,8 @@ public class Task3_TDD_1 {
 		parser.parse("--list {1337, 69}");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(new Integer[] { 1337, 69 }, l);
+		assertEquals(l, Arrays.asList(1337, 69));
+
 	}
 
 	@Test
@@ -44,7 +47,7 @@ public class Task3_TDD_1 {
 		parser.parse("--list {}");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(new Integer[] {}, l);
+		assertEquals(0, l.size());
 	}
 
 	/**
@@ -56,7 +59,7 @@ public class Task3_TDD_1 {
 		parser.parse("");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(new Integer[] {}, l);
+		assertEquals(0, l.size());
 	}
 
 	/**
@@ -69,7 +72,8 @@ public class Task3_TDD_1 {
 		parser.parse("--list '1,2) >4!5{_<3-6}'");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(new Integer[] { 1, 2, 3, 4, 4, 5, 5, 6 }, l);
+		assertEquals(l, Arrays.asList(1, 2, 3, 4, 4, 5, 5, 6 ));
+
 	}
 
 	/**
@@ -83,10 +87,10 @@ public class Task3_TDD_1 {
 		parser.parse("-f 4-7 -b 7-4");
 
 		List<Integer> f = parser.getIntegerList("forwards");
-		assertEquals(new Integer[] { 4, 5, 6, 7 }, f);
+		assertEquals(f, Arrays.asList(4, 5, 6, 7));
 
 		List<Integer> b = parser.getIntegerList("backwards");
-		assertEquals(new Integer[] { 4, 5, 6, 7 }, b);
+		assertEquals(Arrays.asList(4, 5, 6, 7), b);
 	}
 
 	/**
@@ -101,10 +105,11 @@ public class Task3_TDD_1 {
 		parser.parse("-f -7--5 -b -2-1");
 
 		List<Integer> f = parser.getIntegerList("forwards");
-		assertEquals(new Integer[] { -7, -6, -5 }, f);
+		assertEquals(Arrays.asList(-7, -6, -5 ), f);
 
 		List<Integer> b = parser.getIntegerList("backwards");
-		assertEquals(new Integer[] { -2, -1, 0, 1 }, b);
+		assertEquals(Arrays.asList(-2, -1, 0, 1 ), b);
+
 	}
 
 	/**
@@ -117,7 +122,7 @@ public class Task3_TDD_1 {
 		parser.parse("--list 3-");
 
 		List<Integer> l = parser.getIntegerList("list");
-		assertEquals(new Integer[] {}, l);
+		assertEquals(0, l.size());
 	}
 
 }
