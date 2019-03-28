@@ -1,9 +1,9 @@
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import st.Parser;
+
+import static org.junit.Assert.*;
 
 public class Task1_Functional {
 	private Parser parser;
@@ -210,9 +210,7 @@ public class Task1_Functional {
 	 * - parser.add( "output" , Parser.STRING);
 	 * - parser.add( "optimise" , Parser.BOOLEAN);
 	 *
-	 */
 
-	/**
 	 * 4.1. Same as 3.1.
 	 * Adding an option with the same name as an existing option will override
 	 * the option defined previously.
@@ -239,8 +237,8 @@ public class Task1_Functional {
 	 *
 	 */
 
-	//- [ ]  The prefix ​ --​ is used for the full name of the option.
-	//- [ ]  The prefix ​ - ​ is used for the shortcut version of the option.
+	//  The prefix ​ --​ is used for the full name of the option.
+	//  The prefix ​ - ​ is used for the shortcut version of the option.
 
 	@Test
 	public void fullNameAndShortNameAreDistinct() {
@@ -291,7 +289,7 @@ public class Task1_Functional {
 		parser.parse("-i 100 -b -s Hi -c q");
 
 		assertEquals(100, parser.getInteger("i"));
-		assertEquals(true, parser.getBoolean("b"));
+		assertTrue(parser.getBoolean("b"));
 		assertEquals("Hi", parser.getString("s"));
 		assertEquals('q', parser.getChar("c"));
 	}
@@ -310,7 +308,7 @@ public class Task1_Functional {
 		parser.parse("-i 100 -b -s Hi -c q");
 
 		assertEquals(100, parser.getInteger("int"));
-		assertEquals(true, parser.getBoolean("bool"));
+		assertTrue(parser.getBoolean("bool"));
 		assertEquals("Hi", parser.getString("str"));
 		assertEquals('q', parser.getChar("char"));
 	}
@@ -342,7 +340,7 @@ public class Task1_Functional {
 		parser.parse("");
 
 		assertEquals(0, parser.getInteger("i"));
-		assertEquals(false, parser.getBoolean("b"));
+		assertFalse(parser.getBoolean("b"));
 		assertEquals("", parser.getString("s"));
 		assertEquals('\0', parser.getChar("c"));
 	}
