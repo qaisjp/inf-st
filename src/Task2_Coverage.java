@@ -427,4 +427,10 @@ public class Task2_Coverage {
 		assertEquals("", parser.getString("s"));
 		assertEquals('\0', parser.getChar("c"));
 	}
+
+    @Test
+	public void testInvalidArgStart() {
+		parser.add("output", "o", Parser.STRING);
+        assertEquals(-3, parser.parse("+output"));
+	}
 }
