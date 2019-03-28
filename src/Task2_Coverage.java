@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import st.OptionMap;
 import st.Parser;
 
 public class Task2_Coverage {
@@ -492,4 +493,16 @@ public class Task2_Coverage {
 		parser.add("output", "o", Parser.STRING);
 		assertEquals(-3, parser.parse("- -output=a.out"));
 	}
+
+
+    @Test
+	public void testDuplicateOption() {
+        OptionMap optionMap = new OptionMap();
+		optionMap.store("bool", "b", Parser.INTEGER);
+		optionMap.store("bool", "b", Parser.BOOLEAN);
+	}
+
+
+
+
 }
