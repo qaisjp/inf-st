@@ -302,8 +302,11 @@ public class Task1_Functional {
 	}
 
 
-	// If the user assigns values to the option multiple times, the value taken by the option is
-	// from the last assignment.
+	/*
+	 * 5.7. The user does not need to provide values for every option. For the
+	 * options that are not assigned a value using this function, a default value
+	 * (described in Section 6) is stored.
+	 */
 	@Test
 	public void noValueProvided() {
 		parser.add("output", Parser.STRING);
