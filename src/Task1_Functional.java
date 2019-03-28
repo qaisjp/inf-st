@@ -300,6 +300,19 @@ public class Task1_Functional {
 	}
 
 
+	// If the user assigns values to the option multiple times, the value taken by the option is
+	// from the last assignment.
+	@Test
+	public void noValueProvided() {
+		parser.add("output", Parser.STRING);
+		parser.add("input", Parser.STRING);
+
+		parser.parse("--output=a");
+		assertEquals("", parser.getString("input"));
+		assertEquals("a", parser.getString("output"));
+	}
+
+
 
 
 
