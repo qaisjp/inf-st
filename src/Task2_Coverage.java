@@ -2,6 +2,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +21,51 @@ public class Task2_Coverage {
 	@Before
 	public void setup() {
 		parser = new Parser();
+	}
+
+	@Test
+	public void testOptionUnreachable() throws ClassNotFoundException, NoSuchMethodException, SecurityException,
+			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		OptionMap o = new OptionMap();
+		Class<?> clazz = Class.forName("st.OptionMap$Option");
+		Constructor<?> ctor = clazz.getConstructor(OptionMap.class, String.class, Integer.class);
+		ctor.setAccessible(true);
+		Object object = ctor.newInstance(new Object[] { o, "asdf", Parser.INTEGER });
+
+		Method setName = clazz.getDeclaredMethod("setName", String.class);
+		setName.setAccessible(true);
+		setName.invoke(object, "output");
+
+		Method getName = clazz.getDeclaredMethod("getName");
+		getName.setAccessible(true);
+		assertEquals("output", getName.invoke(object));
+
+		Method setShortcut = clazz.getDeclaredMethod("setShortcut", String.class);
+		setShortcut.setAccessible(true);
+		setShortcut.invoke(object, "o");
+
+		Method getShortcut = clazz.getDeclaredMethod("getShortcut");
+		getShortcut.setAccessible(true);
+		assertEquals("o", getShortcut.invoke(object));
+
+		Method setType = clazz.getDeclaredMethod("setType", Integer.class);
+		setType.setAccessible(true);
+		setType.invoke(object, Parser.STRING);
+
+		Method getType = clazz.getDeclaredMethod("getType");
+		getType.setAccessible(true);
+		assertEquals(Parser.STRING, getType.invoke(object));
+
+		Constructor<?> ctor2 = clazz.getConstructor(OptionMap.class, String.class, String.class, Integer.class);
+		ctor2.setAccessible(true);
+		Object object2 = ctor2.newInstance(new Object[] { o, "output", "o", Parser.STRING });
+
+		Method eq = clazz.getDeclaredMethod("equals", Object.class);
+		eq.setAccessible(true);
+		assertTrue((boolean) eq.invoke(object2, object));
+		assertFalse((boolean) eq.invoke(object2, new Object[] { null }));
+		assertTrue((boolean) eq.invoke(object2, object2));
+		assertFalse((boolean) eq.invoke(object2, ""));
 	}
 
 	@Test(expected = RuntimeException.class)
@@ -495,11 +544,11 @@ public class Task2_Coverage {
 	}
 
 
-    @Test
+	@Test
 	public void testDuplicateOption() {
-        OptionMap optionMap = new OptionMap();
+		OptionMap optionMap = new OptionMap();
 		optionMap.store("bool", "b", Parser.INTEGER);
 		optionMap.store("bool", "b", Parser.BOOLEAN);
 	}
-	
+
 }
