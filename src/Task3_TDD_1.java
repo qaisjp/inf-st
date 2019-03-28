@@ -29,6 +29,15 @@ public class Task3_TDD_1 {
 	}
 
 	@Test
+	public void multidigit() {
+		parser.add("list", "l", Parser.STRING);
+		parser.parse("--list {1337, 69}");
+
+		List<Integer> l = parser.getIntegerList("list");
+		assertEquals(new Integer[] { 1337, 69 }, l);
+	}
+
+	@Test
 	public void empty() {
 		parser.add("list", "l", Parser.STRING);
 		parser.parse("--list {}");
