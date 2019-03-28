@@ -261,7 +261,7 @@ public class Task1_Functional {
 		assertEquals("b_file.txt", parser.getString("b_test"));
 	}
 
-	// - [ ]  The user can use quotation marks, single or double,
+	// The user can use quotation marks, single or double,
 	// optionally around the value. option=“value”​ , ​ option=’value’​ and ​
 	// option=value​ are all valid and result in the same effect. .
     @Test
@@ -273,6 +273,33 @@ public class Task1_Functional {
 		assertEquals("out.txt", parser.getString("output"));
 		assertEquals("in.txt", parser.getString("input"));
 	}
+
+	// As quotation marks can be used to decorate values,
+	// they can still be part of the value if the user wants.
+	// If single quotation marks are used, double quotation marks in the
+	// value string are viewed as part of the string and vice versa.
+	// For example, ​ option=’value=”abc”​ ’ is valid and the value of the
+	// option is value=”abc”.
+    @Test
+	public void nestedQuotationMarks() {
+		parser.add("output", Parser.STRING);
+
+		parser.parse("--output='value=\"out.txt\"'");
+		assertEquals("value=\"out.txt\"", parser.getString("output"));
+	}
+
+
+	// If the user assigns values to the option multiple times, the value taken by the option is
+	// from the last assignment.
+	@Test
+	public void useLastValue() {
+		parser.add("output", Parser.STRING);
+
+		parser.parse("--output=a --output=b");
+		assertEquals("b", parser.getString("output"));
+	}
+
+
 
 
 
