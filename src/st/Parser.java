@@ -1,23 +1,26 @@
 package st;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Parser {
 	public static final int INTEGER = 1;
 	public static final int BOOLEAN = 2;
 	public static final int STRING = 3;
 	public static final int CHAR = 4;
-	
+
 	private OptionMap optionMap;
-	
+
 	public Parser() {
 		optionMap = new OptionMap();
 	}
-	
+
 	public void add(String option_name, String shortcut, int value_type) {
 		optionMap.store(option_name, shortcut, value_type);
 	}
-	
+
 	public void add(String option_name, int value_type) {
 		optionMap.store(option_name, "", value_type);
 	}
@@ -65,7 +68,7 @@ public class Parser {
 		}
 		return result;
 	}
-	
+
 	public boolean getBoolean(String option) {
 		String value = getString(option);
 		boolean result;
@@ -76,12 +79,12 @@ public class Parser {
 		}
 		return result;
 	}
-	
+
 	public String getString(String option) {
 		String result = optionMap.getValue(option);
 		return result;
 	}
-	
+
 	public char getChar(String option) {
 		String value = getString(option);
 		char result;
@@ -92,7 +95,7 @@ public class Parser {
 		}
 		return result;
 	}
-	
+
 	public int parse(String command_line_options) {
 		if (command_line_options == null) {
 			return -1;
@@ -101,7 +104,7 @@ public class Parser {
 		if (length == 0) {
 			return -2;
 		}
-		
+
 		int char_index = 0;
 		while (char_index < length) {
 			char current_char = command_line_options.charAt(char_index);
@@ -113,7 +116,7 @@ public class Parser {
 				}
 				char_index++;
 			}
-			
+
 			boolean isShortcut = true;
 			String option_name = "";
 			String option_value = "";
@@ -128,7 +131,7 @@ public class Parser {
 				return -3;
 			}
 			current_char = command_line_options.charAt(char_index);
-			
+
 			while (char_index < length) {
 				current_char = command_line_options.charAt(char_index);
 				if (Character.isLetterOrDigit(current_char) || current_char == '_') {
@@ -138,11 +141,11 @@ public class Parser {
 					break;
 				}
 			}
-			
+
 			boolean hasSpace = false;
 			if (current_char == ' ') {
 				hasSpace = true;
-				while (char_index < length) {				
+				while (char_index < length) {
 					current_char = command_line_options.charAt(char_index);
 					if (current_char != ' ') {
 						break;
@@ -184,7 +187,7 @@ public class Parser {
 					}
 				}
 			}
-			
+
 			if (isShortcut) {
 				optionMap.setValueWithOptioShortcut(option_name, option_value);
 			} else {
@@ -194,12 +197,66 @@ public class Parser {
 		}
 		return 0;
 	}
-	
+
+	public List<Integer> getIntegerString(String option) {
+		String strList = getString(option);
+
+		// first we need to separate into tokens:
+		List<Character> nums = Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
+		int length = strList.length();
+
+		int char_index = 0;
+
+		ArrayList<Integer> parsed_nums = new ArrayList<>();
+		StringBuilder currentInt = new StringBuilder();
+		while (char_index < length) {
+			char current_char = strList.charAt(char_index);
+			if (nums.contains(current_char)) {
+				currentInt.append(current_char);
+			}
+			if ()
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
+
 	private int getType(String option) {
 		int type = optionMap.getType(option);
 		return type;
 	}
-	
+
 	@Override
 	public String toString() {
 		return optionMap.toString();
