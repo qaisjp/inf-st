@@ -60,9 +60,7 @@ public class Task1_Functional {
 	 * - parser.add("output" , "o" , Parser.STRING);
 	 * - parser.add("optimise", "O" , Parser.BOOLEAN);
 	 *
-	 */
 
-	/**
 	 * 3.1. Adding an option with the same name as an existing option will override
 	 * the option defined previously.
 	 */
@@ -154,6 +152,7 @@ public class Task1_Functional {
 
 	// Better to use a JUnit parameterized class here,
 	// but due to coursework restrictions we can't properly do this.
+	@SuppressWarnings("WeakerAccess")
 	public void addBoolOpts(String opts, boolean expected) {
 		Parser p = new Parser();
 		p.add("optimise", "O", Parser.BOOLEAN);
