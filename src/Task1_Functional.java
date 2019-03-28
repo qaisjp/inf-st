@@ -246,10 +246,25 @@ public class Task1_Functional {
 	public void fullNameAndShortNameAreDistinct() {
 		parser.add("output", "o", Parser.STRING);
 		// this should not work
+		parser.parse("-output output.txt");
 		assertEquals("", parser.getString("output"));
 		parser.parse("--o output.txt");
 		assertEquals("", parser.getString("output"));
 	}
+
+    //	Assigning a value to the option can either be using a “=” or a space. ​
+    //	option=value​ and option value​ are both valid.
+    @Test
+	public void assignUsingEqual() {
+		parser.add("a_test", "a", Parser.STRING);
+		parser.add("b_test", "b", Parser.STRING);
+
+		parser.parse("--a_test=a_file.txt --b_test b_file.txt");
+		assertEquals("a_file.txt", parser.getString("a_test"));
+		assertEquals("b_file.txt", parser.getString("b_test"));
+	}
+
+
 
 
 	/*
