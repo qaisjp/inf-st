@@ -219,14 +219,12 @@ public class Parser {
 					ranged = true;
 					lowerRange = Integer.parseInt(currentInt);
 					currentInt = "";
-					System.out.println("Find lower range " + lowerRange);
 				} else {
 					// We are already in a range, so we can't start another one
 					return errorList;
 				}
 			} else if (!currentInt.isEmpty()) {
 				int n = Integer.parseInt(currentInt);
-				System.out.println("Found upper range " + n);
 				if (ranged) {
 					if (lowerRange > n) {
 						int temp = n;

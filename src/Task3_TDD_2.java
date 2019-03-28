@@ -31,7 +31,7 @@ public class Task3_TDD_2 {
 	@Test
 	public void negative() {
 		parser.add("list", "l", Parser.STRING);
-		parser.parse("--list -1");
+		parser.parse("--list '-1'");
 
 		List<Integer> l = parser.getIntegerList("list");
 		assertEquals(1, l.size());
@@ -119,7 +119,7 @@ public class Task3_TDD_2 {
 	public void negativeRange() {
 		parser.add("forwards", "f", Parser.STRING);
 		parser.add("backwards", "b", Parser.STRING);
-		parser.parse("-f -7--5 -b -2-1");
+		parser.parse("-f '-7--5' -b '-2-1'");
 
 		List<Integer> f = parser.getIntegerList("forwards");
 		assertEquals(Arrays.asList(-7, -6, -5 ), f);
