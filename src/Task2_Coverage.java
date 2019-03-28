@@ -19,6 +19,24 @@ public class Task2_Coverage {
 	}
 
 	@Test
+	public void getInteger() {
+		parser.add("big", Parser.INTEGER);
+		parser.add("boolA", Parser.BOOLEAN);
+		parser.add("boolB", Parser.BOOLEAN);
+		parser.add("strA", Parser.STRING);
+		parser.add("strB", Parser.STRING);
+		parser.add("char", Parser.CHAR);
+
+		parser.parse("--big 123456789123456789 --boolA --strA output.txt --strB='123' --char a");
+		assertEquals(0, parser.getInteger("big"));
+		assertEquals(1, parser.getInteger("boolA"));
+		assertEquals(0, parser.getInteger("boolB"));
+		assertEquals(0, parser.getInteger("strA"));
+		assertEquals(123, parser.getInteger("strB"));
+		assertEquals('a', parser.getInteger("char"));
+	}
+
+	@Test
 	public void stringer() {
 		parser.add("output", "o", Parser.STRING);
 		parser.add("input", "i", Parser.STRING);
